@@ -1,16 +1,12 @@
 # Open-Meteo Historical Weather Data
 
-Download daily historical weather data for a location and date range from the
-[Open-Meteo Archive API](https://open-meteo.com/en/docs/historical-weather-api).
-Choose coordinates, dates, timezone, units, and daily variables from the command
-line. The tool can also add rolling averages, lag values, event indicators, and
-calendar features to the downloaded observations.
+A command line tool for downloading daily historical weather for any location and date range from the [Open-Meteo Archive API](https://open-meteo.com/en/docs/historical-weather-api). It is written for educational use and as a general purpose helper for research projects that need weather data for one or many locations.
+
+You choose the coordinates, dates, timezone, units, and daily variables. The tool can also add rolling averages, lag values, event indicators (heat wave, freeze, heavy rain, high wind), and calendar features to the downloaded observations.
 
 ## Requirements
 
-- Python 3.9 or newer
-
-Create and activate a virtual environment, then install dependencies:
+Python 3.9 or newer. Create and activate a virtual environment, then install dependencies:
 
 ```bash
 python3 -m venv .venv
@@ -32,9 +28,7 @@ python weather_data.py \
   --output atlanta_weather.csv
 ```
 
-By default, the tool requests the daily variables listed in
-[`weather_data.py`](./weather_data.py) and adds derived features. To request a
-smaller set of variables, pass a comma-separated list:
+By default the tool requests the daily variables listed in [`weather_data.py`](./weather_data.py) and adds derived features. To request fewer variables, pass a comma separated list:
 
 ```bash
 python weather_data.py \
@@ -46,23 +40,14 @@ python weather_data.py \
   --output new_york_2020.csv
 ```
 
-Use `--no-features` to save only API observations and the date column. The
-temperature unit is Celsius by default; pass `--temperature-unit fahrenheit` to
-request Fahrenheit. `--heat-wave-threshold` and `--freeze-threshold` use the
-selected temperature unit. Heavy-rain thresholds are in millimeters, and
-high-wind thresholds are in kilometers per hour (the API's default wind-speed
-unit). Output directories are created automatically.
+Use `--no-features` to save only API observations and the date column. Temperature is in Celsius by default; pass `--temperature-unit fahrenheit` for Fahrenheit. The `--heat-wave-threshold` and `--freeze-threshold` options use the selected temperature unit. Heavy rain thresholds are in millimeters and high wind thresholds are in kilometers per hour. Output directories are created automatically.
+
+To cover several locations, run the tool once per location and combine the files.
 
 ## Data source and attribution
 
-Weather observations come from Open-Meteo and its upstream providers. Review the
-[Open-Meteo documentation](https://open-meteo.com/en/docs/historical-weather-api)
-and [terms](https://open-meteo.com/en/terms) for current attribution,
-availability, and usage requirements. This project is independent and is not
-affiliated with Open-Meteo.
+Weather observations come from Open-Meteo and its upstream providers. Review the [documentation](https://open-meteo.com/en/docs/historical-weather-api) and [terms](https://open-meteo.com/en/terms) for attribution and usage requirements. This project is independent and not affiliated with Open-Meteo.
 
 ## License
 
-No license has been selected for this project. The source code is publicly
-visible, but others do not automatically receive permission to reuse or
-redistribute it.
+No license has been selected. The source code is publicly visible, but others do not automatically receive permission to reuse or redistribute it.

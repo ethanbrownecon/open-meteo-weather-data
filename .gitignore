@@ -1,0 +1,8 @@
+# Downloaded weather data
+*.csv
+
+# Python and local environment files
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
